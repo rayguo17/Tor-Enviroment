@@ -40,7 +40,7 @@ COPY ./tor-0.4.7.11 /src/tor
 RUN apt update && \
     build_temps="build-essential automake" && \ 
     build_deps="libssl-dev zlib1g-dev libevent-dev ca-certificates\
-        dh-apparmor libseccomp-dev dh-systemd \
+        dh-apparmor libseccomp-dev iproute2 \
         git" && \
     DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install net-tools vim $build_deps $build_temps \
         init-system-helpers \

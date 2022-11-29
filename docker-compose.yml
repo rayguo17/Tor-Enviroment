@@ -1,0 +1,434 @@
+version: '3.0'
+services:
+ da1:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: DA
+  volumes:
+    ## Needed to keep track of other nodes
+    - ./tor:/tor
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.2
+ da2:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: DA
+  volumes:
+    ## Needed to keep track of other nodes
+    - ./tor:/tor
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.3
+ da3:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: DA
+  volumes:
+    ## Needed to keep track of other nodes
+    - ./tor:/tor
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.4
+ relay1:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: EXIT
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    # Make sure the DA's are already up
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.5
+ relay2:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: EXIT
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    # Make sure the DA's are already up
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.6
+ relay3:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: EXIT
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    # Make sure the DA's are already up
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.7
+ relay4:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: EXIT
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    # Make sure the DA's are already up
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.8
+ relay5:
+  image: tor-origin
+  #expose:
+  #  - "7000"
+  #  - "9030"
+  environment:
+    ROLE: EXIT
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    # Make sure the DA's are already up
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.9
+#  relay6:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.10
+#  relay7:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.11
+#  relay8:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.12
+#  relay9:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.13
+#  relay10:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.14
+#  relay11:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.15
+#  relay12:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.16
+#  relay13:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.17
+#  relay14:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.18
+#  relay15:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.19
+#  relay16:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.20
+#  relay17:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.21
+#  relay18:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.22
+#  relay19:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.23
+#  relay20:
+#   image: tor-origin
+#   #expose:
+#   #  - "7000"
+#   #  - "9030"
+#   environment:
+#     ROLE: EXIT
+#   volumes:
+#     - ./tor:/tor
+#   depends_on:
+#     # Make sure the DA's are already up
+#     - da1
+#     - da2
+#     - da3
+#   networks:
+#    tor_network:
+#     ipv4_address: 192.168.8.24
+ client:
+  image: tor-origin
+  ports:
+    #Setups a listener on host machine
+    - "9050:9050"
+    - "9051:9051"
+  volumes:
+    - ./tor:/tor
+  environment:
+    ROLE: CLIENT
+  depends_on: 
+    - da1
+    - da2
+    - da3
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.100
+ hs:
+  image: tor-origin
+  #expose:
+  #  - "80"
+  environment:
+    ROLE: HS
+    # This will create a hidden service that points to
+    # the service "web" which is runing nginx. You can 
+    # change this to whatever ip or hostname you want
+    TOR_HS_PORT: "80"
+    TOR_HS_ADDR: "web"
+  volumes:
+    - ./tor:/tor
+  depends_on:
+    - da1
+    - da2
+    - da3
+  links:
+    - web
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.101
+ web:
+  image: nginx
+  #expose:
+  #  - "80"
+  networks:
+   tor_network:
+    ipv4_address: 192.168.8.102
+  
+networks:
+ tor_network:
+  driver: bridge
+  ipam:
+   config:
+    - subnet: 192.168.8.0/24

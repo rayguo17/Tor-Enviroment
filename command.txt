@@ -1,0 +1,2 @@
+curl --proxy socks5://127.0.0.1:9050 http://192.168.8.102
+curl 192.168.8.2:9030/tor/status-vote/current/consensus
